@@ -1,0 +1,95 @@
+{
+    "name": "vscode-gitbook",
+    "displayName": "VSCode Gitbook",
+    "description": "Gitbook Editor Extension for VSCode",
+    "version": "0.1.0",
+    "publisher": "joaquin6",
+    "engines": {
+        "vscode": "^1.29.1"
+    },
+    "categories": [
+        "Programming Languages",
+        "Other"
+    ],
+    "activationEvents": [
+        "workspaceContains:./SUMMARY.md"
+    ],
+    "main": "./src/index",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "gitbook-explorer",
+                    "title": "Gitbook Explorer",
+                    "icon": "book.svg"
+                }
+            ]
+        },
+        "views": {
+            "gitbook-explorer": [
+                {
+                    "id": "bookstruct",
+                    "name": "Book Structure",
+                    "when": "showOutline"
+                }
+            ]
+        },
+        "commands": [
+            {
+                "command": "gitbook.addEntry",
+                "title": "Add"
+            },
+            {
+                "command": "gitbook.renameEntry",
+                "title": "Rename"
+            },
+            {
+                "command": "gitbook.openDoc",
+                "title": "Edit"
+            },
+            {
+                "command": "gitbook.editSummary",
+                "title": "Edit Summary.md"
+            }
+        ],
+        "menus": {
+            "view/item/context": [
+                {
+                    "command": "gitbook.addEntry",
+                    "when": "view == bookstruct"
+                },
+                {
+                    "command": "gitbook.renameEntry",
+                    "when": "view == bookstruct"
+                },
+                {
+                    "command": "gitbook.openDoc",
+                    "when": "view == bookstruct"
+                },
+                {
+                    "command": "gitbook.editSummary",
+                    "when": "view == bookstruct"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "debug": "webpack --config webpack.debug.js",
+        "build": "webpack",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "2.5.2",
+        "vscode": "1.1.22",
+        "mocha": "5.2.0",
+        "eslint": "5.9.0",
+        "@types/node": "10.12.10",
+        "@types/mocha": "5.2.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/joaquin6/vscode-gitbook"
+    },
+    "homepage": "https://github.com/Joaquin6/vscode-gitbook/blob/master/README.md"
+}
